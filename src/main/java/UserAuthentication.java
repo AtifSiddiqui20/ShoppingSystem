@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class UserAuthentication {
     private User loggedInUser;
-    private UserList userList;
+    private final UserList userList;
 
     public UserAuthentication(UserList userList) {
         this.loggedInUser = null;
@@ -30,6 +30,13 @@ public class UserAuthentication {
         }
     }
 
+    public boolean isUserLoggedIn() {
+        return loggedInUser != null;
+    }
+
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
 
     public void logout() {
         if (loggedInUser != null) {

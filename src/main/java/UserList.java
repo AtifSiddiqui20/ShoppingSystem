@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class UserList { // this class manages the dicionary for users
-    private Map<String, User> userData; // this map will store the users' credentials
+    private final Map<String, User> userData; // this map will store the users' credentials
 
     public Map<String, User> getUserData() {
         return userData;
@@ -49,17 +49,56 @@ public class UserList { // this class manages the dicionary for users
         return false;
     }
 
+    public boolean isUserLoggedIn(String username) {
+        User user = getUser(username);
+        return user != null && user.isLoggedIn();
+    }
 
+    public boolean isEmpty() {
+        return userData.isEmpty();
+    }
+
+    public void setLoggedInStatus(String username, boolean loggedIn) {
+        User user = getUser(username);
+        if (user != null) {
+            user.setLoggedIn(loggedIn);
+        } else {
+            System.out.println("User with username " + username + " not found.");
+        }
+    }
     public User getUser(String username) {
         return userData.get(username);
     }
 
-    public void displayAllUsers() {
-        System.out.println("List of all users:");
+    public void updateUserInfo(String username, String name, String creditCard, String address) {
+        if (userData.containsKey(username)) {
+            User user = userData.get(username);
+            user.setName(name);
+            user.setCreditCard(creditCard);
+            user.setAddress(address);
+            System.out.println("User information updated successfully.");
+        } else {
+            System.out.println("User not found.");
+        }
+    }
 
-        for (Map.Entry<String, User> entry : userData.entrySet()) {
-            User user = entry.getValue();
-            System.out.println("Username: " + user.getUsername() + ", Password: " + user.getPassword());
+    public void displayUserDetails(String username) {
+        if (userData.containsKey(username)) {
+            User user = userData.get(username);
+            user.displayUserInfo();
+        } else {
+            System.out.println("User not found.");
+        }
+    }
+    public void displayAllUsers() {
+        if (isEmpty()) {
+            System.out.println("No users in the system.");
+        } else {
+            System.out.println("List of all users:");
+            for (Map.Entry<String, User> entry : userData.entrySet()) {
+                User user = entry.getValue();
+                System.out.println("Username: " + user.getUsername() + ", Password: " + user.getPassword());
+            }
         }
     }
 }
