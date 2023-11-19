@@ -36,6 +36,7 @@ public class Main {
                             System.out.println("Please enter your password");
                             String password = scan1.next();
                             userAuthentication.login(username, password);
+                            System.out.println("Returning to menu...");
                             // log
 
                             break;
@@ -46,6 +47,7 @@ public class Main {
                             String password1 = scan1.next();
                             userList.addUser(new User(username1, password1));
                             itemList = new ItemList(username1);
+                            System.out.println("Returning to menu...");
 
                             // log
                             break;
@@ -67,6 +69,7 @@ public class Main {
                             System.out.println(i + ". Return to main menu");
                             int catChoice = scan1.nextInt();
                             if (catChoice == i) {
+                                System.out.println("Returning to menu...");
                                 break;
                             } else {
                                 if (userAuthentication.isUserLoggedIn()) {
@@ -88,6 +91,7 @@ public class Main {
                                             shoppingCart = ShoppingCart.getInstance(); // Ensure the instance is created
                                             shoppingCart.setCurrentUser(username2);
                                             shoppingCart.addItem(username2, selectedProduct);
+                                            System.out.println("Returning to menu...");
                                             break;
                                         case 2:
                                             System.out.println("How many " + allProducts.get(1).getName() + "s do you want to add?");
@@ -104,13 +108,16 @@ public class Main {
                                             shoppingCart = ShoppingCart.getInstance(); // Ensure the instance is created
                                             shoppingCart.setCurrentUser(username2);
                                             shoppingCart.addItem(username2, selectedProduct2);
+                                            System.out.println("Returning to menu...");
                                             break;
                                         default:
                                             System.out.println("Please enter an option listed above");
+                                            System.out.println("Returning to menu...");
                                             break;
                                     }
                                 } else {
                                     System.out.println("You need to log in or sign up before adding items to your cart.");
+                                    System.out.println("Returning to menu...");
                                 }
                             }
 
@@ -122,19 +129,38 @@ public class Main {
                                 if (userAuthentication.isUserLoggedIn()) {
                                     String username2 = userAuthentication.getLoggedInUser().getUsername();
                                     displayCart(username2);
+                                    System.out.println("What would you like to do?");
+                                    System.out.println("1. Checkout\n 2. return to menu");
+                                    int cartChoice = scan1.nextInt();
+                                    switch (cartChoice) {
+                                        case 1:
+                                            System.out.println("Loading Payment processor...");
+
+                                            break;
+
+                                        case 2:
+                                            System.out.println("Returning to menu...");
+                                            break;
+                                        default:
+                                            System.out.println("Returning to menu...");
+                                            System.out.println("Please enter an option listed above");
+                                    }
                                 }
 
                             } else {
                                 System.out.println("You need to log in or sign up before viewing your cart.");
+                                System.out.println("Returning to menu...");
                             }
                             break;
                         case 5:
                             if (itemList == null || !userAuthentication.isUserLoggedIn()) {
                                 System.out.println("There's nothing your cart! Try adding items or signing in!");
+                                System.out.println("Returning to menu...");
                                 break;
                             } else {
+                                System.out.println("Loading Payment processor...");
 
-
+                                break;
                             }
                         case 6:
                             if (userAuthentication.isUserLoggedIn()) {
@@ -157,12 +183,15 @@ public class Main {
                                         userList.displayUserDetails(username2);
                                         break;
                                     case 2:
+                                        System.out.println("Returning to menu...");
                                         break;
                                     default:
+                                        System.out.println("Returning to menu...");
                                         System.out.println("Please enter an option listed above");
                                 }
                             } else {
                                 System.out.println("You're not signed in. Why not try signing in?");
+                                System.out.println("Returning to menu...");
                             }
                             break;
                         case 7:
