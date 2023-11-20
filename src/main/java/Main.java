@@ -60,7 +60,6 @@ public class Main {
                             itemList = new ItemList(username1);
                             System.out.println("Returning to menu...");
 
-                            // log
                             break;
                         case 3:
                             System.out.println("Here's the products!");
@@ -68,7 +67,7 @@ public class Main {
                                 System.out.println("Name: " + product.getName());
                                 System.out.printf("Price: $%.2f\n", product.getPrice());
                                 System.out.println("----------------------");
-                                // needs add to cart functionality
+
                             }
                             System.out.println("What would you like to do?");
                             int i = 0;
@@ -108,12 +107,12 @@ public class Main {
                                             System.out.println("How many " + allProducts.get(1).getName() + "s do you want to add?");
                                             int quantityToAdd2 = scan1.nextInt();
 
-                                            // Update the quantity of the product
+
                                             Product selectedProduct2 = allProducts.get(1);
                                             selectedProduct2.setQuantity(quantityToAdd2);
 
                                             System.out.println(quantityToAdd2 + " " + selectedProduct2.getName() + "(s) added to the cart!");
-                                            // logs
+
                                             assert itemList != null;
                                             itemList.addItem(selectedProduct2);
                                             shoppingCart = ShoppingCart.getInstance(); // Ensure the instance is created

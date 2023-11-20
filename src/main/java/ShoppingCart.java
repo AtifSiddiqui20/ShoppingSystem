@@ -84,6 +84,9 @@ public class ShoppingCart {
         }
         return 0;
     }
+    public List<Product> getCartContents (String username) {
+        return cartContents.get(username);
+    }
 
     public void emptyCart(String username) {
         cartContents.remove(username);
