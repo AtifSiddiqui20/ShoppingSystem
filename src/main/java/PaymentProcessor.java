@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public class PaymentProcessor {
 
-    public static int paymentProcessor(UserList userList, String username, ShoppingCart shoppingCart) {
+    public static void paymentProcessor(UserList userList, String username, ShoppingCart shoppingCart) {
         Scanner scanner = new Scanner(System.in);
         User user = userList.getUser(username);
         System.out.println("------------------------------------");
         System.out.println("Welcome to the payment processor!");
         if (user == null) {
             System.out.println("DEBUG: User is null. Username: " + username);
-            return 0;
+            return;
         } else if (user.getCreditCard() == null) {
             System.out.println("It seems you don't have credit card information saved. Please provide the following details:");
 
@@ -25,7 +25,7 @@ public class PaymentProcessor {
             user.setCreditCard(name + "\n" + ccInfo + "\n (Address: " + Address + ")");
             userList.updateUserInfo(username, name, ccInfo, Address);
             System.out.println("Information saved successfully!");
-            return 1;
+
 
         }
         System.out.println("Here is your cart and payment information, please confirm it is correct before proceeding");
@@ -47,13 +47,11 @@ public class PaymentProcessor {
                 System.out.println("Order successful! Thanks for visiting the Penguin Emporium!");
                 System.out.println("We hope you'll love your new penguins, please come again!");
                 System.out.println("Returning to main menu...");
-                return 2;
             }
         }
         catch (NumberFormatException e) {
             System.out.println("Error: Invalid number format");
         }
-        return 3;
     }
     }
 

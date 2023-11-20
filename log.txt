@@ -420,3 +420,21 @@
 2023-11-20 16:14:46 - testUser was checked if they were logged in or not
 2023-11-20 16:21:38 - testUser signed in successfully
 2023-11-20 16:21:38 - testUser's information updated successfully.
+2023-11-20 17:04:11 - atta signed in successfully
+2023-11-20 17:04:11 - No user currently logged in.
+2023-11-20 17:04:11 - atta's was authenticated successfully.
+2023-11-20 17:04:11 - atta logged in successfully
+2023-11-20 17:04:42 - Item was added to atta's itemList
+2023-11-20 17:04:44 - atta's cart was displayed
+2023-11-20 17:05:02 - atta's information updated successfully.
+2023-11-20 17:05:10 - atta's cart was displayed
+2023-11-20 17:05:13 - atta's cart was displayed
+2023-11-20 17:05:16 - atta's cart was emptied
+2023-11-20 17:05:16 - Payment has been processed, returning to main menu
+2023-11-20 17:05:30 - logout successful
+2023-11-20 17:05:35 - All users were displayed to User
+2023-11-20 17:06:28 - atta signed in successfully
+2023-11-20 17:06:28 - No user currently logged in.
+2023-11-20 17:06:28 - atta's was authenticated successfully.
+2023-11-20 17:06:28 - atta logged in successfully
+2023-11-20 17:06:32 - Item was added to atta's itemList
