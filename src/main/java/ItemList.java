@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ItemList {
-    private String username;
-    private List<Product> items;
+    private final String username;
+    private final List<Product> items;
 
     public ItemList(String username) {
         this.username = username;

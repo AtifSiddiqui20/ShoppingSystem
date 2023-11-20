@@ -16,16 +16,19 @@ public class UserAuthentication {
             User user = userList.getUser(username);
             if (user.isLoggedIn()) {
                 System.out.println("User " + username + " is already logged in.");
+                Logger.log(username + " tried to log in again, but they were already logged in");
                 return false;
             }
 
             user.setLoggedIn(true);
             loggedInUser = user;
 
-            System.out.println(username + " logged in successfully! Welcome back!");
+            System.out.println(username + " logged in successfully!");
+            Logger.log(username + " logged in successfully");
             return true;
         } else {
             System.out.println("Username not found. Would you like to sign up and create an account?");
+            Logger.log("login in unsuccessful");
             return false;
         }
     }
@@ -35,6 +38,7 @@ public class UserAuthentication {
     }
 
     public User getLoggedInUser() {
+
         return loggedInUser;
     }
 
@@ -42,9 +46,10 @@ public class UserAuthentication {
         if (loggedInUser != null) {
             loggedInUser.setLoggedIn(false);
             System.out.println(loggedInUser.getUsername() + " logged out successfully! Please come again!");
+            Logger.log("logout successful");
             loggedInUser = null;
         } else {
-            System.out.println("No user currently logged in.");
+            Logger.log("No user currently logged in.");
         }
     }
 }

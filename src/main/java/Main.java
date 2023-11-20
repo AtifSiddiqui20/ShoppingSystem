@@ -23,21 +23,33 @@ public class Main {
         do {
             try {
                 System.out.println("\n===========================================");
-                System.out.println(" 1. Sign in\n 2. Sign up for an account\n 3. View Product catalog!\n 4. View cart\n 5. Checkout Items in Cart\n 6. Update account information \n 7. sign out\n 8. View secret stuff (for testing ONLY!)\n 9. Leave the shop.");
+                System.out.println(" 1. Sign in\n 2. Sign up for an account\n 3. View Product catalog!\n 4. View cart\n 5. Checkout Items in Cart\n 6. Update account information \n 7. Sign out\n 8. View secret stuff (for testing ONLY!)\n 9. Leave the shop.");
                 System.out.println("===========================================");
 
                 if (scan1.hasNextInt()) {
                     int choice = scan1.nextInt();
                     switch (choice) {
                         case 1:
-                            System.out.println("Please enter your username");
-                            String username = scan1.next();
-                            System.out.println("Please enter your password");
-                            String password = scan1.next();
-                            userAuthentication.login(username, password);
-                            System.out.println("Returning to menu...");
-                            // log
-
+                            if (userAuthentication.isUserLoggedIn()) {
+                                System.out.println("Someone else is already logged in, would you like to log them out? 1 for yes and 2 for no.");
+                                int logout = scan1.nextInt();
+                                if (logout == 1) {
+                                    System.out.println("Please enter your username");
+                                    String username = scan1.next();
+                                    System.out.println("Please enter your password");
+                                    String password = scan1.next();
+                                    userAuthentication.login(username, password);
+                                    System.out.println("Returning to menu...");
+                                }
+                            } else {
+                                System.out.println("Please enter your username");
+                                String username = scan1.next();
+                                System.out.println("Please enter your password");
+                                String password = scan1.next();
+                                userAuthentication.login(username, password);
+                                System.out.println("Returning to menu...");
+                                break;
+                            }
                             break;
                         case 2:
                             System.out.println("Please enter your username");
@@ -110,6 +122,40 @@ public class Main {
                                             shoppingCart.addItem(username2, selectedProduct2);
                                             System.out.println("Returning to menu...");
                                             break;
+                                        case 3:
+                                            System.out.println("How many " + allProducts.get(2).getName() + "s do you want to add?");
+                                            int quantityToAdd3 = scan1.nextInt();
+
+                                            // Update the quantity of the product
+                                            Product selectedProduct3 = allProducts.get(2);
+                                            selectedProduct3.setQuantity(quantityToAdd3);
+
+                                            System.out.println(quantityToAdd3 + " " + selectedProduct3.getName() + "(s) added to the cart!");
+                                            // logs
+                                            assert itemList != null;
+                                            itemList.addItem(selectedProduct3);
+                                            shoppingCart = ShoppingCart.getInstance(); // Ensure the instance is created
+                                            shoppingCart.setCurrentUser(username2);
+                                            shoppingCart.addItem(username2, selectedProduct3);
+                                            System.out.println("Returning to menu...");
+                                            break;
+                                        case 4:
+                                            System.out.println("How many " + allProducts.get(3).getName() + "s do you want to add?");
+                                            int quantityToAdd4 = scan1.nextInt();
+
+                                            // Update the quantity of the product
+                                            Product selectedProduct4 = allProducts.get(3);
+                                            selectedProduct4.setQuantity(quantityToAdd4);
+
+                                            System.out.println(quantityToAdd4 + " " + selectedProduct4.getName() + "(s) added to the cart!");
+                                            // logs
+                                            assert itemList != null;
+                                            itemList.addItem(selectedProduct4);
+                                            shoppingCart = ShoppingCart.getInstance(); // Ensure the instance is created
+                                            shoppingCart.setCurrentUser(username2);
+                                            shoppingCart.addItem(username2, selectedProduct4);
+                                            System.out.println("Returning to menu...");
+                                            break;
                                         default:
                                             System.out.println("Please enter an option listed above");
                                             System.out.println("Returning to menu...");
@@ -168,11 +214,19 @@ public class Main {
                             }
                             break;
                         case 5:
-                            if (itemList == null || !userAuthentication.isUserLoggedIn()) {
-                                System.out.println("There's nothing your cart! Try adding items or signing in!");
+                            if (!userAuthentication.isUserLoggedIn()) {
+                                System.out.println("You're not signed in! Sign in or sign up to access your cart!");
                                 System.out.println("Returning to menu...");
+
                             } else {
-                                System.out.println("Loading Payment processor...");
+                                String username2 = userAuthentication.getLoggedInUser().getUsername();
+                                if (shoppingCart == null || shoppingCart.isEmpty(username2)) {
+                                    System.out.println("Your cart is empty! Try adding some stuff first!");
+                                } else {
+                                    System.out.println("Loading Payment processor...");
+                                    PaymentProcessor.paymentProcessor(userList, username2, shoppingCart);
+                                }
+
 
                             }
                             break;
@@ -209,9 +263,15 @@ public class Main {
                             }
                             break;
                         case 7:
+                            if (userList.isEmpty()) {
+                                System.out.println("There are no users currently signed in!");
+                        }else
+                            {
                             userAuthentication.logout();
-                            System.out.println("See ya!");
+                            System.out.println("You've been logged out! See ya!");
                             // logs
+                            break;
+                        }
                             break;
                         case 8:
                             System.out.println("Hey that's a secret!");
@@ -227,7 +287,7 @@ public class Main {
                             break;
                     }
                 } else {
-                    System.out.println("Invalid entry detected. Please enter only a number between 1-6, thanks.\n");
+                    System.out.println("Invalid entry detected. Please enter only a number between listed above, thanks.\n");
                     scan1.next();
                 }
             } catch (InputMismatchException e) { //checks for incorrect data types to avoid crashing

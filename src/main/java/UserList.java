@@ -19,6 +19,7 @@ public class UserList { // this class manages the dicionary for users
         } else {
             userData.put(username, user);
             System.out.println("You have successfully signed up! Redirecting back to the main page...");
+            Logger.log(username +" signed in successfully");
         }
 
     }
@@ -27,6 +28,7 @@ public class UserList { // this class manages the dicionary for users
         String username = user.getUsername();
         if (userData.containsKey(username)) {
             System.out.println("User " + username + " has been removed, we're sad to see you go!");
+            Logger.log(username +"'s removed successfully.");
             user.setLoggedIn(false);
             userData.remove(username);
 
@@ -41,6 +43,7 @@ public class UserList { // this class manages the dicionary for users
             User user = userData.get(username);
             if (user.getPassword().equals(password)) {
                 System.out.println("User " + username + " authenticated successfully.");
+                Logger.log(username +"'s was authenticated successfully.");
 
                 return true;
             }
@@ -51,6 +54,7 @@ public class UserList { // this class manages the dicionary for users
 
     public boolean isUserLoggedIn(String username) {
         User user = getUser(username);
+        Logger.log(username +" was checked if they were logged in or not");
         return user != null && user.isLoggedIn();
     }
 
@@ -77,6 +81,7 @@ public class UserList { // this class manages the dicionary for users
             user.setCreditCard(creditCard);
             user.setAddress(address);
             System.out.println("User information updated successfully.");
+            Logger.log(username +"'s information updated successfully.");
         } else {
             System.out.println("User not found.");
         }
@@ -86,6 +91,7 @@ public class UserList { // this class manages the dicionary for users
         if (userData.containsKey(username)) {
             User user = userData.get(username);
             user.displayUserInfo();
+            Logger.log(username +"'s information shown successfully.");
         } else {
             System.out.println("User not found.");
         }
@@ -97,6 +103,7 @@ public class UserList { // this class manages the dicionary for users
             System.out.println("List of all users:");
             for (Map.Entry<String, User> entry : userData.entrySet()) {
                 User user = entry.getValue();
+                Logger.log("All users were displayed to User");
                 System.out.println("Username: " + user.getUsername() + ", Password: " + user.getPassword());
             }
         }
