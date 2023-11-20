@@ -1,4 +1,3 @@
-import Products.ConcreteProduct;
 import Products.Product;
 import Products.ProductCatalog;
 
@@ -46,6 +45,7 @@ public class Main {
                             System.out.println("Please enter your password");
                             String password1 = scan1.next();
                             userList.addUser(new User(username1, password1));
+                            userAuthentication.login(username1, password1);
                             itemList = new ItemList(username1);
                             System.out.println("Returning to menu...");
 
@@ -123,30 +123,45 @@ public class Main {
 
                             break;
                         case 4:
-
                             if (itemList != null) {
                                 System.out.println("Here is Your cart!");
-                                if (userAuthentication.isUserLoggedIn()) {
+                                if (userAuthentication.isUserLoggedIn() && shoppingCart != null) {
                                     String username2 = userAuthentication.getLoggedInUser().getUsername();
-                                    displayCart(username2);
-                                    System.out.println("What would you like to do?");
-                                    System.out.println("1. Checkout\n 2. return to menu");
-                                    int cartChoice = scan1.nextInt();
-                                    switch (cartChoice) {
-                                        case 1:
-                                            System.out.println("Loading Payment processor...");
+                                    if (!shoppingCart.isEmpty(username2)) {
+                                        shoppingCart.displayProducts(username2);
+                                        System.out.println("What would you like to do?");
+                                        System.out.println(" 1. Checkout\n 2. return to menu\n 3. Empty cart\n 4. Remove items from cart");
+                                        int cartChoice = scan1.nextInt();
+                                        scan1.nextLine();
+                                        switch (cartChoice) {
+                                            case 1:
+                                                System.out.println("Loading Payment processor...");
+                                                break;
+                                            case 2:
+                                                System.out.println("Returning to menu...");
+                                                break;
+                                            case 3:
+                                                System.out.println("Emptying cart!");
+                                                shoppingCart.emptyCart(username2);
+                                                break;
+                                            case 4:
+                                                System.out.println("Which item would you like to remove? Use the number next to each item's name:");
 
-                                            break;
-
-                                        case 2:
-                                            System.out.println("Returning to menu...");
-                                            break;
-                                        default:
-                                            System.out.println("Returning to menu...");
-                                            System.out.println("Please enter an option listed above");
+                                                int itemToRemove = scan1.nextInt() - 1;
+                                                shoppingCart.removeItem(username2, itemToRemove);
+                                                System.out.println("Returning to menu...");
+                                                break;
+                                            default:
+                                                System.out.println("Please enter an option listed above");
+                                                System.out.println("Returning to menu...");
+                                                break;
+                                        }
                                     }
-                                }
-
+                                    else {
+                                        System.out.println("Your cart is empty! Try adding some stuff first!");
+                                        break;
+                                        }
+                                    }
                             } else {
                                 System.out.println("You need to log in or sign up before viewing your cart.");
                                 System.out.println("Returning to menu...");
@@ -156,12 +171,11 @@ public class Main {
                             if (itemList == null || !userAuthentication.isUserLoggedIn()) {
                                 System.out.println("There's nothing your cart! Try adding items or signing in!");
                                 System.out.println("Returning to menu...");
-                                break;
                             } else {
                                 System.out.println("Loading Payment processor...");
 
-                                break;
                             }
+                            break;
                         case 6:
                             if (userAuthentication.isUserLoggedIn()) {
                                 String username2 = userAuthentication.getLoggedInUser().getUsername();
@@ -237,17 +251,8 @@ public class Main {
 
         private static void displayCart (String username){
             ShoppingCart.getInstance().displayProducts(username);
+
+
         }
+
     }
-
-
-
-
-
-
-
-
-
-
-
-

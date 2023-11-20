@@ -14,6 +14,17 @@ public class ShoppingCart {
         this.currentUser = username;
     }
 
+    public void displayCart(List<Product> cartContents) {
+        System.out.println("Shopping Cart:");
+
+        for (Product product : cartContents) {
+            System.out.println("Product: " + product.getName() + ", Quantity: " + product.getQuantity() + ", Price: $" + product.getPrice());
+        }
+
+        double totalCost = calculateTotalCost(cartContents);
+        System.out.println("Total Cost: $" + totalCost);
+    }
+
     public static ShoppingCart getInstance() {
         return instance;
     }
@@ -30,18 +41,39 @@ public class ShoppingCart {
                 .add(product);
     }
 
-    public void removeItem(String username, Product product) {
-        cartContents
-                .computeIfPresent(username, (k, v) -> {
-                    v.remove(product);
-                    return v;
-                });
+    public double calculateTotalCost(List<Product> cartContents) {
+        double totalCost = 0.0;
+
+        for (Product product : cartContents) {
+            totalCost += product.getPrice() * product.getQuantity();
+        }
+
+        return totalCost;
+    }
+
+    public void removeItem(String username, int itemIndex) {
+        cartContents.computeIfPresent(username, (k, v) -> {
+            if (itemIndex >= 0 && itemIndex < v.size()) {
+                v.remove(itemIndex);
+                System.out.println("Item removed successfully");
+            }
+            return v;
+        });
     }
 
     public void displayProducts(String username) {
         List<Product> products = cartContents.get(username);
         if (products != null) {
-            System.out.println(products);
+            int i = 1;
+            for (Product product: products) {
+                System.out.println("------------------");
+                System.out.printf("(%d) %s\n Price/piece = $%.2f\n Amount = %d\n Item Total = $%.2f\n",i, product.getName(), product.getPrice(), product.getQuantity(), product.getPrice()*product.getQuantity());
+                System.out.println("------------------");
+                i++;
+            }
+            System.out.println("------------------");
+            System.out.printf("\nGrand Total = $%.2f\n",calculateTotalCost(products));
+            System.out.println("------------------");
         } else {
             System.out.println("User " + username + " has no items in the cart.");
         }
