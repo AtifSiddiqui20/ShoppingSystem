@@ -1,6 +1,5 @@
 import Products.Product;
 import Products.ProductCatalog;
-
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -182,6 +181,7 @@ public class Main {
                                         switch (cartChoice) {
                                             case 1:
                                                 System.out.println("Loading Payment processor...");
+                                                PaymentProcessor.paymentProcessor(userList, username2, shoppingCart);
                                                 break;
                                             case 2:
                                                 System.out.println("Returning to menu...");

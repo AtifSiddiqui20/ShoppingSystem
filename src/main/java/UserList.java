@@ -104,7 +104,7 @@ public class UserList { // this class manages the dicionary for users
             for (Map.Entry<String, User> entry : userData.entrySet()) {
                 User user = entry.getValue();
                 Logger.log("All users were displayed to User");
-                System.out.println("Username: " + user.getUsername() + ", Password: " + user.getPassword());
+                System.out.println("Username: " + user.getUsername() + ", Password: " + user.getPassword() + ", Logged in = " + user.isLoggedIn());
             }
         }
     }

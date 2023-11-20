@@ -245,3 +245,65 @@
 2023-11-20 12:20:36 - atta's cart was displayed
 2023-11-20 12:20:38 - atta's cart was emptied
 2023-11-20 12:20:38 - dfgdfg
+2023-11-20 12:40:32 - atta signed in successfully
+2023-11-20 12:40:32 - No user currently logged in.
+2023-11-20 12:40:32 - atta's was authenticated successfully.
+2023-11-20 12:40:32 - atta logged in successfully
+2023-11-20 12:40:41 - Item was added to atta's itemList
+2023-11-20 12:40:55 - attab signed in successfully
+2023-11-20 12:40:55 - logout successful
+2023-11-20 12:40:55 - attab's was authenticated successfully.
+2023-11-20 12:40:55 - attab logged in successfully
+2023-11-20 12:41:14 - Item was added to attab's itemList
+2023-11-20 12:41:18 - attab's cart was displayed
+2023-11-20 12:41:55 - attab's information updated successfully.
+2023-11-20 12:41:55 - attab's cart was displayed
+2023-11-20 12:42:01 - attab's cart was emptied
+2023-11-20 12:42:01 - Payment has been processed, returning to main menu
+2023-11-20 12:42:23 - logout successful
+2023-11-20 12:42:23 - atta's was authenticated successfully.
+2023-11-20 12:42:23 - atta logged in successfully
+2023-11-20 12:42:31 - atta's cart was displayed
+2023-11-20 12:48:02 - atta signed in successfully
+2023-11-20 12:48:02 - No user currently logged in.
+2023-11-20 12:48:02 - atta's was authenticated successfully.
+2023-11-20 12:48:02 - atta logged in successfully
+2023-11-20 12:48:14 - Item was added to atta's itemList
+2023-11-20 12:48:19 - atta's cart was displayed
+2023-11-20 12:48:44 - atta's information updated successfully.
+2023-11-20 12:48:44 - atta's cart was displayed
+2023-11-20 12:49:09 - atta's cart was emptied
+2023-11-20 12:49:09 - Payment has been processed, returning to main menu
+2023-11-20 12:50:28 - All users were displayed to User
+2023-11-20 12:50:32 - logout successful
+2023-11-20 12:52:09 - atta signed in successfully
+2023-11-20 12:52:09 - No user currently logged in.
+2023-11-20 12:52:09 - atta's was authenticated successfully.
+2023-11-20 12:52:09 - atta logged in successfully
+2023-11-20 12:52:17 - atta's information shown successfully.
+2023-11-20 12:52:36 - atta's information updated successfully.
+2023-11-20 12:52:36 - atta's information shown successfully.
+2023-11-20 12:52:40 - All users were displayed to User
+2023-11-20 12:53:54 - atta signed in successfully
+2023-11-20 12:53:54 - No user currently logged in.
+2023-11-20 12:53:54 - atta's was authenticated successfully.
+2023-11-20 12:53:54 - atta logged in successfully
+2023-11-20 12:53:57 - All users were displayed to User
+2023-11-20 12:54:12 - logout successful
+2023-11-20 12:54:12 - login in unsuccessful
+2023-11-20 12:54:25 - catta signed in successfully
+2023-11-20 12:54:25 - No user currently logged in.
+2023-11-20 12:54:25 - catta's was authenticated successfully.
+2023-11-20 12:54:25 - catta logged in successfully
+2023-11-20 12:54:31 - All users were displayed to User
+2023-11-20 12:54:31 - All users were displayed to User
+2023-11-20 12:55:19 - logout successful
+2023-11-20 12:55:19 - catta's was authenticated successfully.
+2023-11-20 12:55:19 - catta logged in successfully
+2023-11-20 12:55:30 - All users were displayed to User
+2023-11-20 12:55:30 - All users were displayed to User
+2023-11-20 12:55:39 - logout successful
+2023-11-20 12:55:39 - catta's was authenticated successfully.
+2023-11-20 12:55:39 - catta logged in successfully
+2023-11-20 12:55:51 - All users were displayed to User
+2023-11-20 12:55:51 - All users were displayed to User
